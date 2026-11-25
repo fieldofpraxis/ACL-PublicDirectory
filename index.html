@@ -1205,14 +1205,14 @@ header.sc{--hp:20px}
 #view .vbar,.cdir,.dres{position:relative;z-index:3;touch-action:manipulation}
 .cdi,#view .vbar input{pointer-events:auto}
 
-.hrot{display:grid;justify-items:center;margin-top:.1em;font-size:.76em;line-height:1.18;letter-spacing:-.035em;font-weight:500;color:#fff}
+.hrot{display:grid;justify-items:center;margin-top:.04em;font-size:1em;line-height:1.08;letter-spacing:-.035em;font-weight:500;color:#fff}
 .hrot b{grid-area:1/1;display:inline-flex;align-items:center;gap:.42em;font-weight:500;white-space:nowrap;opacity:0;transform:translateY(55%);filter:blur(10px);transition:opacity .55s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1),filter .55s}
 .hrot b.on{opacity:1;transform:none;filter:none}
 .hrot b.out{opacity:0;transform:translateY(-55%);filter:blur(10px)}
 .hrot .w{background:linear-gradient(180deg,#f0e8ff 0%,#b79cff 55%,#8a68f0 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
 .hrot .ci{width:.86em;height:.86em;border-radius:.26em}
 .hrot .ci svg{width:.52em;height:.52em}
-@media(max-width:560px){.hrot{font-size:.7em}}
+@media(max-width:560px){.hrot{width:100%;grid-template-columns:minmax(0,1fr)}.hrot b{white-space:normal;justify-self:center;text-align:left;max-width:100%;display:flex;width:max-content}.hrot .w{min-width:0;white-space:normal}}
 @media(prefers-reduced-motion:reduce){.hrot b{transition:none}}
 </style>
 </head>
