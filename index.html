@@ -1188,6 +1188,12 @@ body.onsub .faq,body.onsub .fin:has(.fcta){display:none}
 
 .ddb,.ddb:hover,.ddb.on,.ddb.act,.dd.open>.ddb{background:none!important;box-shadow:none}
 .ddb.on::after{height:1px!important;border-radius:1px;box-shadow:none!important;background:linear-gradient(90deg,#8f7bff,#b58bff)!important}
+
+@media(max-width:860px){
+header{--hp:clamp(18px,4vw,48px)}
+header.sc{--hp:20px}
+.mtabs{flex:0 0 calc(100% + 2*var(--hp))!important;width:calc(100% + 2*var(--hp));margin:6px calc(-1*var(--hp)) -6px!important;padding:0 var(--hp)!important;box-sizing:border-box;border-radius:0 0 22px 22px}
+}
 </style>
 </head>
 <body>
