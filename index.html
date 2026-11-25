@@ -1227,7 +1227,7 @@ radial-gradient(34% 66% at 100% 100%,rgba(140,102,255,1) 0%,rgba(96,62,235,.6) 4
 @media(max-width:700px){.home{padding:56px 18px 64px;margin:8px calc(50% - 50vw + 8px) 40px}.home::before{background:radial-gradient(120% 60% at 50% 104%,rgba(184,156,255,1) 0%,rgba(132,94,255,.85) 34%,rgba(80,50,220,.4) 62%,transparent 86%),radial-gradient(64% 46% at 0% 100%,rgba(140,102,255,.9),transparent 76%),radial-gradient(64% 46% at 100% 100%,rgba(140,102,255,.9),transparent 76%)}}
 /* narrower navbar capsule on scroll */
 header{width:100%;box-sizing:border-box;align-self:center;transition:margin .4s cubic-bezier(.2,.8,.2,1),padding .4s cubic-bezier(.2,.8,.2,1),border-radius .4s,background .3s,border-color .3s,box-shadow .4s,top .4s,width .5s cubic-bezier(.2,.8,.2,1)}
-header.sc{width:min(1080px,calc(100% - 24px));margin:10px 0 0;padding:9px 22px;gap:18px}
+header.sc{width:min(1120px,calc(100% - 2*clamp(18px,4vw,48px)));margin:10px 0 0;padding:9px 22px;gap:18px}
 @media(max-width:860px){header.sc{padding:9px 16px}}
 </style>
 </head>
