@@ -1233,6 +1233,8 @@ header.sc{width:min(1120px,calc(100% - 2*clamp(18px,4vw,48px)));margin:10px 0 0;
 h1,h1 em,.ht,.ht em,.hrot,.hrot b,.hrot .w{font-weight:500!important}
 h1 .ht{background:none;-webkit-text-fill-color:currentColor}
 #hglow{display:none!important}
+
+#rgrid,#vgrid,#abody{min-height:min(78vh,720px)}
 </style>
 </head>
 <body>
@@ -1435,7 +1437,7 @@ window.ABL=AS==="pop"?"Terpopuler":"Terbaru";
 const h=`<div class="ugrid">${L.map(ac1).join("")}</div>`;
 return h}
 function articles0(){ffold();if(Q){AQ=Q;Q=""}const SEL=TAGS.filter(t=>ACS.has(t.k)),T=SEL.length===1?SEL[0]:null;
-const head=T?`<div class="head"><div class="eyebrow">Topik</div><h2>${esc(T.n)}</h2><p>${esc(T.d)}</p></div>`:`<div class="head"><div class="eyebrow">Articles</div><h2>Kumpulan Artikel</h2><p>Tulisan pilihan seputar AI. Pilih topik lewat daftar di bawah kolom pencarian.</p></div>`;
+const head=`<div class="head"><div class="eyebrow">Articles</div><h2>Kumpulan Artikel</h2><p>Tulisan pilihan seputar AI. Pilih topik lewat daftar di bawah kolom pencarian.</p></div>`;
 view.innerHTML=head+`<div class="vbar"><label class="vs">${IC.search}<input id="aq" type="search" placeholder="Cari artikel…" value="${esc(AQ)}" autocomplete="off" aria-label="Cari artikel"></label><div class="seg" role="group" aria-label="Urutkan"><button class="sgb" type="button" data-asort="new" aria-pressed="${AS==="new"}">Terbaru</button><button class="sgb" type="button" data-asort="pop" aria-pressed="${AS==="pop"}">Terpopuler</button></div></div><div id="abody">${abody()}</div>`}
 view.addEventListener("input",e=>{if(e.target.id!=="aq")return;AQ=e.target.value;$("#abody").innerHTML=abody()});
 view.addEventListener("click",e=>{const g=e.target.closest("[data-atg]");if(g){const s=g.closest(".atp"),gr=s.querySelector(".agrid"),o=gr.hidden;gr.hidden=!o;s.classList.toggle("open",o);g.setAttribute("aria-expanded",o);o?AOPEN.add(g.dataset.atg):AOPEN.delete(g.dataset.atg);return}const b=e.target.closest("[data-asort]");if(!b)return;AS=b.dataset.asort;b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#abody").innerHTML=abody()});
@@ -1508,7 +1510,8 @@ $("#rec").addEventListener("click",e=>{const b=e.target.closest("[data-rt]");if(
 window.__keep=1;if(k==="resources"){RCS.add(v);go("resources")}else if(k==="knowledges"){if(t==="c"){VCS.add(v)}else{VLS.add(v)}go("knowledges")}else{ACS.add(v);go("articles")}});
 view.addEventListener("click",e=>{const b=e.target.closest(".cdi");if(!b)return;const k=window.__pg||location.hash.slice(1),SM={c:VCS,l:VLS,r:RCS,a:ACS};
 if(b.dataset.cda){SM[b.dataset.cda].clear()}else{const S=SM[b.dataset.cdt],v=b.dataset.cdv;S.has(v)?S.delete(v):S.add(v)}
-Q="";window.__keep=1;const fn={resources,knowledges,articles}[k];if(fn)fn()});
+Q="";window.__keep=1;window.__pillT=Date.now();const y=window.scrollY,fn={resources,knowledges,articles}[k];if(fn){fn();window.scrollTo(0,y)}});
+document.addEventListener("click",e=>{if(window.__pillT&&Date.now()-window.__pillT<500&&e.target.closest&&e.target.closest("#view .card,#view .sk,#view .abig,#view .asm,#view .asv,#view [data-v],#view [data-a],#view [data-r]")){e.stopPropagation();e.preventDefault()}},true);
 const R={resources,knowledges,articles};
 function route(){const h=location.hash.slice(1);if(!R[h])window.__pg="";const k=R[h]?h:"";{const kp=window.__keep;window.__keep=0;if(!kp){if(!CAT)RCS.clear();if(!TAG)ACS.clear();if(!VC&&!VL){VCS.clear();VLS.clear()}if(!CAT&&!TAG&&!VC&&!VL)RQ=""}}if(k&&!window.__pk&&document.body.classList.contains("coll")){document.body.classList.remove("coll");try{localStorage.setItem("acl-coll","")}catch(_){}if(typeof syncCb=="function")syncCb()}window.__pk=k;
 document.querySelectorAll(".ddb").forEach(b=>b.classList.toggle("on",b.dataset.k===k));(k?R[k]:home)();if(!k)renderSide("");window.scrollTo(0,0);document.title=(k?NAV.find(n=>n[0]===k)[1]+" | ":"")+"AI Creator Labs"}
