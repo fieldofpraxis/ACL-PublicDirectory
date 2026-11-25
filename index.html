@@ -1204,6 +1204,16 @@ header.sc{--hp:20px}
 
 #view .vbar,.cdir,.dres{position:relative;z-index:3;touch-action:manipulation}
 .cdi,#view .vbar input{pointer-events:auto}
+
+.hrot{display:grid;justify-items:center;margin-top:.1em;font-size:.76em;line-height:1.18;letter-spacing:-.035em;font-weight:500;color:#fff}
+.hrot b{grid-area:1/1;display:inline-flex;align-items:center;gap:.42em;font-weight:500;white-space:nowrap;opacity:0;transform:translateY(55%);filter:blur(10px);transition:opacity .55s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1),filter .55s}
+.hrot b.on{opacity:1;transform:none;filter:none}
+.hrot b.out{opacity:0;transform:translateY(-55%);filter:blur(10px)}
+.hrot .w{background:linear-gradient(180deg,#f0e8ff 0%,#b79cff 55%,#8a68f0 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.hrot .ci{width:.86em;height:.86em;border-radius:.26em}
+.hrot .ci svg{width:.52em;height:.52em}
+@media(max-width:560px){.hrot{font-size:.7em}}
+@media(prefers-reduced-motion:reduce){.hrot b{transition:none}}
 </style>
 </head>
 <body>
@@ -1278,6 +1288,7 @@ const VID=[
 {c:"AI Income",t:"30 Juta/Bulan",img:TH[10],b:"UPCOMING",g:"#38227e,#09081a"}];
 ["12:40","8:15","6:02","14:28","18:35","10:12","22:47","9:30","7:45","11:08",""].forEach((d,i)=>{if(d)VID[i].d=d});
 ["Beginner","Beginner","Beginner","Beginner","Beginner","Intermediate","Advanced","Intermediate","Intermediate","Intermediate","Advanced"].forEach((l,i)=>{VID[i].lv=l});
+const ROT=["AI Agent","AI Income","AI Content","AI Workflow","AI Prompting","Prompt Engineering","AI Tools","AI Mindset","Basic AI"];
 const ALLT=["AI Prompting","Prompt Engineering","AI Agent","AI Workflow","AI Content","AI Mindset","AI Tools","Basic AI","AI Income"];
 [["Basic AI","AI Tools","AI Prompting"],["AI Agent","AI Tools"],["Basic AI","AI Mindset"],["Basic AI","AI Mindset"],["Basic AI","AI Mindset","Prompt Engineering"],["AI Income","AI Content"],["AI Agent","AI Workflow"],["AI Income","AI Workflow"],["AI Income","AI Workflow"],["AI Income","AI Content"],["AI Income","AI Content"]].forEach((t,i)=>{VID[i].tg=t});
 const vtg=v=>v.tg||[v.c];
@@ -1370,14 +1381,14 @@ return `<section class="hsec fres"><div class="fhd"><h2 class="fth">Featured Res
 
 function home(){view.innerHTML=`<section class="home">
 <div class="eyebrow">AI Creator Labs · Learning Portal</div>
-<h1 aria-label="Satu Pintu Untuk Belajar AI"><span class="ht" aria-hidden="true">Satu Pintu Untuk<br><em>Belajar</em> AI</span><span class="hm" aria-hidden="true"><span class="hf">Satu Pintu Untuk<br><em>Belajar</em> AI</span></span></h1>
+<h1 aria-label="Satu Pintu Belajar AI"><span class="ht" aria-hidden="true">Satu Pintu <em>Belajar</em></span><span class="hm" aria-hidden="true"><span class="hf">Satu Pintu <em>Belajar</em></span></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
 <p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. Semuanya ada di satu tempat.</p><div class="free"><i></i>100% Gratis · Tanpa Biaya, Tanpa Langganan</div>
 <div class="chips">${CHIPS.map((c,i)=>`<button class="chip" data-chip="${i}">${esc(c[0])}</button>`).join("")}</div>
 <form class="ask" id="ask"><input id="q" type="text" placeholder="Mau belajar apa hari ini?" aria-label="Cari materi belajar" autocomplete="off"><button type="submit" aria-label="Cari">Cari</button></form>
 </section>
 <section class="stats" aria-label="Statistik portal">${STATS.map(x=>`<div class="st"><div class="nw"><b data-to="${x.n}" data-suf="${x.s}">0${x.s}</b><i class="bd"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 5h9v2h-9zM17 5h2v9h-2zM15 9h2v2h-2zM13 11h2v2h-2zM11 13h2v2h-2zM9 15h2v2h-2zM7 17h2v2h-2zM5 19h2v2h-2z"/></svg></i></div><span>${x.l}</span></div>`).join("")}</section>
 ${hsecs()}`;
-$("#ask").onsubmit=e=>{e.preventDefault();openSearch($("#q").value.trim())};heatH1();stats();bindQ();bindCar()}
+$("#ask").onsubmit=e=>{e.preventDefault();openSearch($("#q").value.trim())};heatH1();stats();bindQ();bindCar();startRot()}
 
 const skr=(r,i)=>`<button class="sk sl2" data-r="${i}">${AB(i,r.c)}<code class="slug">/${r.t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}</code><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p><svg class="sar" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 11h16v2H3zM15 7h2v2h-2zM17 9h2v2h-2zM17 13h2v2h-2zM15 15h2v2h-2z"/></svg></button>`;
 function rgrid(){const q=RQ.trim().toLowerCase(),L=RES.filter(r=>(!RCS.size||RCS.has(r.c))&&(!q||(r.t+" "+r.d+" "+r.c).toLowerCase().includes(q)));if(RSO==="pop")L.sort((p,r)=>RPOP.indexOf(RES.indexOf(p))-RPOP.indexOf(RES.indexOf(r)));
@@ -1604,6 +1615,12 @@ $("#top").onclick=()=>scrollTo({top:0,behavior:"smooth"});
 $("#flogo").src=$(".logo img").src;
 $("footer").addEventListener("click",e=>{const a=e.target.closest("a[data-go],a[data-tag]");if(!a)return;e.preventDefault();Q="";CAT="";if(a.dataset.tag){TAG=a.dataset.tag;go("articles")}else{TAG="";go(a.dataset.go)}});
 
+
+function startRot(){clearInterval(window.__rot);const w=$("#hrot");if(!w)return;const L=[...w.children];if(L.length<2||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+let i=0,hold=false;w.addEventListener("mouseenter",()=>hold=true);w.addEventListener("mouseleave",()=>hold=false);
+window.__rot=setInterval(()=>{if(hold||document.hidden||!document.body.contains(w)){if(!document.body.contains(w))clearInterval(window.__rot);return}
+const a=L[i];i=(i+1)%L.length;const b=L[i];a.classList.remove("on");a.classList.add("out");b.classList.remove("out");b.classList.add("on");
+setTimeout(()=>a.classList.remove("out"),700)},2600)}
 function heatH1(){const h=$("h1"),g=$("#hglow");if(!h||!g||matchMedia("(pointer:coarse)").matches)return;
 let tx=0,ty=0,x=0,y=0,rad=0,tr=0,run=false,ox=0,oy=0;const L=(a,b,k)=>a+(b-a)*k;
 const tick=()=>{x=L(x,tx,.24);y=L(y,ty,.24);rad=L(rad,tr,.14);
