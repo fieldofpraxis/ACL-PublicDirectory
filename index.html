@@ -1174,6 +1174,17 @@ body.onsub .faq,body.onsub .fin:has(.fcta){display:none}
 .dcnt{color:var(--mute);font-size:clamp(15px,1.6vw,18px)}
 .dres .seg{margin:0}
 @media(max-width:560px){.cdg{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px}.cdi{font-size:16px;padding:16px 0}}
+
+.cdg{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.cdi{align-items:center;gap:8px;padding:12px 18px!important;border:1px solid rgba(190,170,255,.2)!important;border-radius:16px;background:rgba(255,255,255,.03);box-shadow:none!important;font-size:clamp(15px,1.4vw,18px)!important;color:rgba(222,218,250,.75)}
+.cdi sup{margin-top:0;font-size:12px}
+.cdi:hover{transform:translateY(-2px);border-color:rgba(200,176,255,.5)!important;background:rgba(150,120,255,.1)}
+.cdi.on{border-color:#a58bff!important;background:rgba(150,120,255,.14);color:#fff;box-shadow:0 0 0 3px rgba(150,120,255,.12)!important}
+.cdx{display:inline-grid;place-items:center;width:18px;height:18px;margin-left:2px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;transition:background .2s}
+.cdx svg{width:14px;height:14px}
+.cdi:hover .cdx{background:rgba(255,255,255,.28)}
+.dres{border-top:0!important;padding-top:0!important}
+@media(max-width:860px){.msb{display:none!important}}
 </style>
 </head>
 <body>
@@ -1414,7 +1425,7 @@ function dirItems(k){
 if(k==="resources"){const cs=[...new Set(RES.map(r=>r.c))];return [{l:"",all:["r",!RCS.size],it:cs.map(c=>({t:"r",v:c,n:c,c:RES.filter(r=>r.c===c).length,on:RCS.has(c)}))}]}
 if(k==="knowledges")return [{l:"Topik",all:["c",!VCS.size],it:ALLT.map(c=>({t:"c",v:c,n:c,c:VID.filter(v=>vtg(v).includes(c)).length,on:VCS.has(c)}))},{l:"Level",all:["l",!VLS.size],it:["Beginner","Intermediate","Advanced"].map(l=>({t:"l",v:l,n:l,c:VID.filter(v=>v.lv===l).length,on:VLS.has(l)}))}];
 return [{l:"",all:["a",!ACS.size],it:TAGS.map(t=>({t:"a",v:t.k,n:t.n,c:t.a.length,on:ACS.has(t.k)}))}]}
-function dirHtml(k){return `<nav class="cdir" aria-label="Kategori">${dirItems(k).map(g=>`${g.l?`<div class="cdl">${g.l}</div>`:""}<div class="cdg">${`<button type="button" class="cdi${g.all[1]?" on":""}" data-cda="${g.all[0]}" aria-pressed="${g.all[1]}"><span>Semua</span><sup>${({resources:RES,knowledges:VID,articles:ART})[k].length}</sup></button>`+g.it.map(x=>`<button type="button" class="cdi${x.on?" on":""}" data-cdt="${x.t}" data-cdv="${esc(x.v)}" aria-pressed="${x.on}"><span>${esc(x.n)}</span><sup>${x.c}</sup></button>`).join("")}</div>`).join("")}</nav>`}
+function dirHtml(k){return `<nav class="cdir" aria-label="Kategori">${dirItems(k).map(g=>`${g.l?`<div class="cdl">${g.l}</div>`:""}<div class="cdg">${`<button type="button" class="cdi${g.all[1]?" on":""}" data-cda="${g.all[0]}" aria-pressed="${g.all[1]}"><span>Semua</span><sup>${({resources:RES,knowledges:VID,articles:ART})[k].length}</sup></button>`+g.it.map(x=>`<button type="button" class="cdi${x.on?" on":""}" data-cdt="${x.t}" data-cdv="${esc(x.v)}" aria-pressed="${x.on}"><span>${esc(x.n)}</span><sup>${x.c}</sup>${x.on?`<i class="cdx" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M5 5h3v3h-3zM16 5h3v3h-3zM8 8h3v3h-3zM13 8h3v3h-3zM10 10h4v4h-4zM8 13h3v3h-3zM13 13h3v3h-3zM5 16h3v3h-3zM16 16h3v3h-3z"/></svg></i>`:""}</button>`).join("")}</div>`).join("")}</nav>`}
 function wrap(k){renderSide(k);const bar=view.querySelector(".vbar");if(!bar)return;const seg=bar.querySelector(".seg"),grid=view.querySelector("#rgrid,#vgrid,#abody");
 const row=document.createElement("div");row.className="dres";row.innerHTML='<span class="dcnt" id="dcnt"></span>';if(seg)row.appendChild(seg);
 bar.insertAdjacentHTML("afterend",dirHtml(k));view.querySelector(".cdir").after(row);
