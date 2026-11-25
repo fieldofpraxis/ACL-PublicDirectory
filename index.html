@@ -1154,6 +1154,26 @@ header{flex-wrap:wrap;gap:10px 8px}
 .gh .gr .arw{display:none!important}
 .gh .gr .more{margin-left:0!important}
 }
+
+/* no-sidebar directory */
+body.onsub .faq,body.onsub .fin:has(.fcta){display:none}
+#view .vbar{display:block!important;width:100%;max-width:none;margin:0}
+#view .vbar .vs{display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;padding:0 clamp(18px,2.4vw,30px);height:clamp(54px,6vw,72px);border-radius:999px;border:1px solid rgba(190,170,255,.28);background:rgba(14,11,40,.7);transition:border-color .25s,box-shadow .25s}
+#view .vbar .vs:focus-within{border-color:rgba(196,176,255,.7);box-shadow:0 0 0 4px rgba(150,120,255,.14)}
+#view .vbar .vs input{flex:1;min-width:0;background:none;border:0;outline:0;color:#fff;font:400 clamp(16px,1.8vw,20px) var(--sans)}
+.cdir{width:100%;margin:clamp(28px,4vw,48px) 0 0}
+.cdl{margin:26px 0 4px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.cdg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));column-gap:clamp(20px,3vw,40px)}
+.cdi{display:flex;align-items:flex-start;gap:8px;text-align:left;background:none;border:0;border-bottom:1px solid rgba(190,170,255,.16);padding:clamp(18px,2vw,26px) 0;color:rgba(222,218,250,.62);font:500 clamp(19px,2vw,27px)/1.15 var(--sans);letter-spacing:-.025em;cursor:pointer;transition:color .25s,transform .3s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.cdi sup{font-size:13px;font-weight:400;letter-spacing:0;color:rgba(190,185,230,.5);margin-top:2px;transition:color .25s}
+.cdi:hover{color:#fff;transform:translateX(5px);border-color:rgba(200,176,255,.45)}
+.cdi.on{color:#fff;border-color:#a58bff;box-shadow:0 1px 0 #a58bff}
+.cdi.on sup,.cdi:hover sup{color:#cdbdff}
+.cdi:focus-visible{outline:2px solid #a58bff;outline-offset:2px;border-radius:6px}
+.dres{width:100%;box-sizing:border-box;margin:clamp(26px,3.4vw,44px) 0 clamp(18px,2vw,26px);display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:clamp(22px,3vw,34px);border-top:1px solid rgba(190,170,255,.16)}
+.dcnt{color:var(--mute);font-size:clamp(15px,1.6vw,18px)}
+.dres .seg{margin:0}
+@media(max-width:560px){.cdg{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px}.cdi{font-size:18px;padding:16px 0}}
 </style>
 </head>
 <body>
@@ -1333,7 +1353,7 @@ const skr=(r,i)=>`<button class="sk sl2" data-r="${i}">${AB(i,r.c)}<code class="
 function rgrid(){const q=RQ.trim().toLowerCase(),L=RES.filter(r=>(!RCS.size||RCS.has(r.c))&&(!q||(r.t+" "+r.d+" "+r.c).toLowerCase().includes(q)));if(RSO==="pop")L.sort((p,r)=>RPOP.indexOf(RES.indexOf(p))-RPOP.indexOf(RES.indexOf(r)));
 return L.map(r=>{const i=RES.indexOf(r);return `<button class="sk sl2" data-r="${i}">${AB(i,r.c)}<code class="slug">/${r.t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}</code><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p><svg class="sar" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 11h16v2H3zM15 7h2v2h-2zM17 9h2v2h-2zM17 13h2v2h-2zM15 15h2v2h-2z"/></svg></button>`}).join("")||`<p class="empty">Tidak ada skill untuk “${esc(RQ)}”.</p>`}
 function resources0(){ffold();if(Q){RQ=Q;Q=""}
-view.innerHTML=`<div class="head"><div class="eyebrow">Resources · Skills${RCS.size?" · "+esc([...RCS].join(" · ")):""}</div><h2>Kumpulan Skills</h2><p>Skill siap pakai dari AI Creator Labs. Cari atau pilih topik di sidebar, buka detailnya, lalu ambil dari GitHub.</p></div>
+view.innerHTML=`<div class="head"><div class="eyebrow">Resources · Skills${RCS.size?" · "+esc([...RCS].join(" · ")):""}</div><h2>Kumpulan Skills</h2><p>Skill siap pakai dari AI Creator Labs. Cari atau pilih topik di bawah, buka detailnya, lalu ambil dari GitHub.</p></div>
 <div class="vbar"><label class="vs">${IC.search}<input id="rq" type="search" placeholder="Cari skill…" value="${esc(RQ)}" autocomplete="off" aria-label="Cari skill"></label><div class="seg" role="group" aria-label="Urutkan"><button class="sgb" type="button" data-rsort="new" aria-pressed="${RSO==="new"}">Terbaru</button><button class="sgb" type="button" data-rsort="pop" aria-pressed="${RSO==="pop"}">Terpopuler</button></div></div>
 <div class="car skg" id="rgrid">${rgrid()}</div>`}
 view.addEventListener("click",e=>{const b=e.target.closest("[data-rsort]");if(!b)return;RSO=b.dataset.rsort;b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#rgrid").innerHTML=rgrid()});
@@ -1355,7 +1375,7 @@ window.ABL=AS==="pop"?"Terpopuler":"Terbaru";
 const h=`<div class="ugrid">${L.map(ac1).join("")}</div>`;
 return h}
 function articles0(){ffold();if(Q){AQ=Q;Q=""}const SEL=TAGS.filter(t=>ACS.has(t.k)),T=SEL.length===1?SEL[0]:null;
-const head=T?`<div class="head"><div class="eyebrow">Topik</div><h2>${esc(T.n)}</h2><p>${esc(T.d)}</p></div>`:`<div class="head"><div class="eyebrow">Articles${SEL.length?" · "+esc(SEL.map(t=>t.n).join(" · ")):""}</div><h2>Kumpulan Artikel</h2><p>Tulisan pilihan seputar AI. Pilih topik lewat sidebar.</p></div>`;
+const head=T?`<div class="head"><div class="eyebrow">Topik</div><h2>${esc(T.n)}</h2><p>${esc(T.d)}</p></div>`:`<div class="head"><div class="eyebrow">Articles${SEL.length?" · "+esc(SEL.map(t=>t.n).join(" · ")):""}</div><h2>Kumpulan Artikel</h2><p>Tulisan pilihan seputar AI. Pilih topik lewat daftar di bawah kolom pencarian.</p></div>`;
 view.innerHTML=head+`<div class="vbar"><label class="vs">${IC.search}<input id="aq" type="search" placeholder="Cari artikel…" value="${esc(AQ)}" autocomplete="off" aria-label="Cari artikel"></label><div class="seg" role="group" aria-label="Urutkan"><button class="sgb" type="button" data-asort="new" aria-pressed="${AS==="new"}">Terbaru</button><button class="sgb" type="button" data-asort="pop" aria-pressed="${AS==="pop"}">Terpopuler</button></div></div><div id="abody">${abody()}</div>`}
 view.addEventListener("input",e=>{if(e.target.id!=="aq")return;AQ=e.target.value;$("#abody").innerHTML=abody()});
 view.addEventListener("click",e=>{const g=e.target.closest("[data-atg]");if(g){const s=g.closest(".atp"),gr=s.querySelector(".agrid"),o=gr.hidden;gr.hidden=!o;s.classList.toggle("open",o);g.setAttribute("aria-expanded",o);o?AOPEN.add(g.dataset.atg):AOPEN.delete(g.dataset.atg);return}const b=e.target.closest("[data-asort]");if(!b)return;AS=b.dataset.asort;b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#abody").innerHTML=abody()});
@@ -1389,10 +1409,16 @@ if(k==="resources"){ffold();const cs=[...new Set(RES.map(r=>r.c))];it=cs.filter(
 else if(k==="knowledges"){vfold();const cs=ALLT;it=cs.filter(c=>!VCS.has(c)).map(c=>({t:"c",v:c,n:c,m:VID.filter(v=>vtg(v).includes(c)).length+" video",i:ci(c)})).concat(["Beginner","Intermediate","Advanced"].map((l,j)=>({t:"l",v:l,n:l,m:VID.filter(v=>v.lv===l).length+" video",i:`<i class="rnum">${j+1}</i>`})).filter(x=>!VLS.has(x.v)));sub="Topik dan level video lain yang bisa kamu jelajahi."}
 else{it=TAGS.filter(t=>!ACS.has(t.k)).map(t=>({t:"a",v:t.k,n:t.n,m:t.a.length+" artikel",i:ci(t.n),d:t.d}));sub="Topik artikel lain yang bisa kamu jelajahi."}
 el.hidden=false;el.innerHTML=`<div class="recw"><div class="rect"><h2 id="rech">Jelajahi Topik Lainnya</h2><p>${sub}</p></div><div class="recg">${it.map(x=>`<button class="rc2" type="button" data-rt="${x.t}" data-rv="${esc(x.v)}">${x.i}<b>${esc(x.n)}</b><span>${x.m}</span></button>`).join("")}</div></div>`}
-function renderSide(k){const sd=$("#side"),sb=$("#sbody");renderRec(k);
-if(!k){sd.hidden=true;document.body.classList.remove("has-side","sopen");return}
-const y=sb.scrollTop;sd.hidden=false;sb.innerHTML=sidebar(k);sb.scrollTop=y;document.body.classList.add("has-side")}
-function wrap(k){const b=document.createElement("button");b.className="btn sbtn";b.type="button";b.dataset.stog="1";b.textContent="☰ Jelajahi";view.prepend(b);renderSide(k)}
+function renderSide(k){const sd=$("#side"),rc=$("#rec");sd.hidden=true;if(rc){rc.hidden=true;rc.innerHTML=""}document.body.classList.remove("has-side","sopen");document.body.classList.toggle("onsub",!!k)}
+function dirItems(k){
+if(k==="resources"){const cs=[...new Set(RES.map(r=>r.c))];return [{l:"",all:["r",!RCS.size],it:cs.map(c=>({t:"r",v:c,n:c,c:RES.filter(r=>r.c===c).length,on:RCS.has(c)}))}]}
+if(k==="knowledges")return [{l:"Topik",all:["c",!VCS.size],it:ALLT.map(c=>({t:"c",v:c,n:c,c:VID.filter(v=>vtg(v).includes(c)).length,on:VCS.has(c)}))},{l:"Level",all:["l",!VLS.size],it:["Beginner","Intermediate","Advanced"].map(l=>({t:"l",v:l,n:l,c:VID.filter(v=>v.lv===l).length,on:VLS.has(l)}))}];
+return [{l:"",all:["a",!ACS.size],it:TAGS.map(t=>({t:"a",v:t.k,n:t.n,c:t.a.length,on:ACS.has(t.k)}))}]}
+function dirHtml(k){return `<nav class="cdir" aria-label="Kategori">${dirItems(k).map(g=>`${g.l?`<div class="cdl">${g.l}</div>`:""}<div class="cdg">${`<button type="button" class="cdi${g.all[1]?" on":""}" data-cda="${g.all[0]}" aria-pressed="${g.all[1]}"><span>Semua</span></button>`+g.it.map(x=>`<button type="button" class="cdi${x.on?" on":""}" data-cdt="${x.t}" data-cdv="${esc(x.v)}" aria-pressed="${x.on}"><span>${esc(x.n)}</span><sup>${x.c}</sup></button>`).join("")}</div>`).join("")}</nav>`}
+function wrap(k){renderSide(k);const bar=view.querySelector(".vbar");if(!bar)return;const seg=bar.querySelector(".seg"),grid=view.querySelector("#rgrid,#vgrid,#abody");
+const row=document.createElement("div");row.className="dres";row.innerHTML='<span class="dcnt" id="dcnt"></span>';if(seg)row.appendChild(seg);
+bar.insertAdjacentHTML("afterend",dirHtml(k));view.querySelector(".cdir").after(row);
+const cnt=()=>{const n=grid.querySelectorAll(".sk,.card").length,u={resources:"skill",knowledges:"video",articles:"artikel"}[k];$("#dcnt").textContent=n+" "+u};cnt();new MutationObserver(cnt).observe(grid,{childList:true})}
 const resources=()=>{resources0();wrap("resources")},knowledges=()=>{knowledges0();wrap("knowledges")},articles=()=>{articles0();wrap("articles")};
 $("#slogo").src="images/logo-sidebar.webp";
 $("#slogof").src=$(".logo img").src;
@@ -1420,6 +1446,9 @@ document.addEventListener("click",e=>{if(e.target.closest("[data-login]")){e.pre
 document.addEventListener("click",e=>{const b=e.target.closest(".fqb");if(!b)return;e.preventDefault();e.stopPropagation();const it=b.parentElement,o=!it.classList.contains("open");document.querySelectorAll(".fqi.open").forEach(x=>{x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")});if(o){it.classList.add("open");b.setAttribute("aria-expanded","true")}},true);
 $("#rec").addEventListener("click",e=>{const b=e.target.closest("[data-rt]");if(!b)return;const t=b.dataset.rt,v=b.dataset.rv,k=location.hash.slice(1);Q="";
 window.__keep=1;if(k==="resources"){RCS.add(v);go("resources")}else if(k==="knowledges"){if(t==="c"){VCS.add(v)}else{VLS.add(v)}go("knowledges")}else{ACS.add(v);go("articles")}});
+view.addEventListener("click",e=>{const b=e.target.closest(".cdi");if(!b)return;const k=location.hash.slice(1),SM={c:VCS,l:VLS,r:RCS,a:ACS};
+if(b.dataset.cda){SM[b.dataset.cda].clear()}else{const S=SM[b.dataset.cdt],v=b.dataset.cdv;S.has(v)?S.delete(v):S.add(v)}
+Q="";window.__keep=1;({resources,knowledges,articles})[k]()});
 const R={resources,knowledges,articles};
 function route(){const h=location.hash.slice(1);const k=R[h]?h:"";{const kp=window.__keep;window.__keep=0;if(!kp){if(!CAT)RCS.clear();if(!TAG)ACS.clear();if(!VC&&!VL){VCS.clear();VLS.clear()}if(!CAT&&!TAG&&!VC&&!VL)RQ=""}}if(k&&!window.__pk&&document.body.classList.contains("coll")){document.body.classList.remove("coll");try{localStorage.setItem("acl-coll","")}catch(_){}if(typeof syncCb=="function")syncCb()}window.__pk=k;
 document.querySelectorAll(".ddb").forEach(b=>b.classList.toggle("on",b.dataset.k===k));(k?R[k]:home)();if(!k)renderSide("");window.scrollTo(0,0);document.title=(k?NAV.find(n=>n[0]===k)[1]+" — ":"")+"AI Creator Labs"}
