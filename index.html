@@ -1229,6 +1229,10 @@ radial-gradient(34% 66% at 100% 100%,rgba(140,102,255,1) 0%,rgba(96,62,235,.6) 4
 header{width:100%;box-sizing:border-box;align-self:center;transition:margin .4s cubic-bezier(.2,.8,.2,1),padding .4s cubic-bezier(.2,.8,.2,1),border-radius .4s,background .3s,border-color .3s,box-shadow .4s,top .4s,width .5s cubic-bezier(.2,.8,.2,1)}
 header.sc{width:min(1120px,calc(100% - 2*clamp(18px,4vw,48px)));margin:10px 0 0;padding:9px 22px;gap:18px}
 @media(max-width:860px){header.sc{padding:9px 16px}}
+
+h1,h1 em,.ht,.ht em,.hrot,.hrot b,.hrot .w{font-weight:500!important}
+h1 .ht{background:none;-webkit-text-fill-color:currentColor}
+#hglow{display:none!important}
 </style>
 </head>
 <body>
@@ -1396,14 +1400,14 @@ return `<section class="hsec fres"><div class="fhd"><h2 class="fth">Featured Res
 
 function home(){view.innerHTML=`<section class="home">
 <div class="eyebrow">AI Creator Labs · Learning Portal</div>
-<h1 aria-label="Satu Pintu Belajar AI"><span class="ht" aria-hidden="true">Satu Pintu <em>Belajar</em></span><span class="hm" aria-hidden="true"><span class="hf">Satu Pintu <em>Belajar</em></span></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
+<h1 aria-label="Satu Pintu Belajar AI"><span class="ht" aria-hidden="true">Satu Pintu <em>Belajar</em></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
 <p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. Semuanya ada di satu tempat, 100% gratis.</p>
 <div class="chips">${CHIPS.map((c,i)=>`<button class="chip" data-chip="${i}">${esc(c[0])}</button>`).join("")}</div>
 <form class="ask" id="ask"><input id="q" type="text" placeholder="Mau belajar apa hari ini?" aria-label="Cari materi belajar" autocomplete="off"><button type="submit" aria-label="Cari">Cari</button></form>
 </section>
 <section class="stats" aria-label="Statistik portal">${STATS.map(x=>`<div class="st"><div class="nw"><b data-to="${x.n}" data-suf="${x.s}">0${x.s}</b><i class="bd"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 5h9v2h-9zM17 5h2v9h-2zM15 9h2v2h-2zM13 11h2v2h-2zM11 13h2v2h-2zM9 15h2v2h-2zM7 17h2v2h-2zM5 19h2v2h-2z"/></svg></i></div><span>${x.l}</span></div>`).join("")}</section>
 ${hsecs()}`;
-$("#ask").onsubmit=e=>{e.preventDefault();openSearch($("#q").value.trim())};heatH1();stats();bindQ();bindCar();startRot()}
+$("#ask").onsubmit=e=>{e.preventDefault();openSearch($("#q").value.trim())};stats();bindQ();bindCar();startRot()}
 
 const skr=(r,i)=>`<button class="sk sl2" data-r="${i}">${AB(i,r.c)}<code class="slug">/${r.t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}</code><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p><svg class="sar" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 11h16v2H3zM15 7h2v2h-2zM17 9h2v2h-2zM17 13h2v2h-2zM15 15h2v2h-2z"/></svg></button>`;
 function rgrid(){const q=RQ.trim().toLowerCase(),L=RES.filter(r=>(!RCS.size||RCS.has(r.c))&&(!q||(r.t+" "+r.d+" "+r.c).toLowerCase().includes(q)));if(RSO==="pop")L.sort((p,r)=>RPOP.indexOf(RES.indexOf(p))-RPOP.indexOf(RES.indexOf(r)));
