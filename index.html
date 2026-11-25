@@ -1214,6 +1214,17 @@ header.sc{--hp:20px}
 .hrot .ci svg{width:.52em;height:.52em}
 @media(max-width:560px){.hrot{width:100%;grid-template-columns:minmax(0,1fr)}.hrot b{white-space:normal;justify-self:center;text-align:left;max-width:100%;display:flex;width:max-content}.hrot .w{min-width:0;white-space:normal}}
 @media(prefers-reduced-motion:reduce){.hrot b{transition:none}}
+
+/* hero glow */
+.home{position:relative!important;isolation:isolate}
+.home::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:calc(50% - 50vw);width:100vw;top:-120px;bottom:-110px;
+background:
+radial-gradient(62% 70% at 50% 104%,rgba(150,118,255,1) 0%,rgba(112,78,255,.78) 30%,rgba(70,40,205,.4) 58%,transparent 82%),
+radial-gradient(30% 62% at 0% 96%,rgba(122,88,255,.95) 0%,rgba(84,52,220,.45) 50%,transparent 80%),
+radial-gradient(30% 62% at 100% 96%,rgba(122,88,255,.95) 0%,rgba(84,52,220,.45) 50%,transparent 80%);
+-webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 8%,#000 52%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,transparent 8%,#000 52%,#000 88%,transparent 100%)}
+.home::after{content:"";position:absolute;z-index:-1;pointer-events:none;left:calc(50% - 50vw);width:100vw;bottom:-110px;height:34%;background:radial-gradient(40% 100% at 50% 100%,rgba(186,164,255,.5),transparent 72%)}
+@media(max-width:700px){.home::before{background:radial-gradient(100% 58% at 50% 104%,rgba(150,118,255,1) 0%,rgba(112,78,255,.7) 36%,transparent 78%),radial-gradient(60% 44% at 0% 96%,rgba(122,88,255,.8),transparent 75%),radial-gradient(60% 44% at 100% 96%,rgba(122,88,255,.8),transparent 75%)}}
 </style>
 </head>
 <body>
