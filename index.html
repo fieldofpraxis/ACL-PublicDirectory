@@ -1194,6 +1194,13 @@ header{--hp:clamp(18px,4vw,48px)}
 header.sc{--hp:20px}
 .mtabs{flex:0 0 calc(100% + 2*var(--hp))!important;width:calc(100% + 2*var(--hp));margin:6px calc(-1*var(--hp)) -6px!important;padding:0 var(--hp)!important;box-sizing:border-box;border-radius:0 0 22px 22px}
 }
+
+@media(max-width:860px){
+.mtabs{gap:0!important;justify-content:space-between}
+.mtabs a{letter-spacing:.1em!important;padding:10px clamp(8px,2.4vw,14px) 12px!important}
+.mtabs a::after{left:clamp(8px,2.4vw,14px)!important;right:clamp(8px,2.4vw,14px)!important}
+}
+@media(max-width:420px){.mtabs a{font-size:11px!important;letter-spacing:.07em!important}}
 </style>
 </head>
 <body>
