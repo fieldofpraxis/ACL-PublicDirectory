@@ -1382,7 +1382,7 @@ return `<section class="hsec fres"><div class="fhd"><h2 class="fth">Featured Res
 function home(){view.innerHTML=`<section class="home">
 <div class="eyebrow">AI Creator Labs · Learning Portal</div>
 <h1 aria-label="Satu Pintu Belajar AI"><span class="ht" aria-hidden="true">Satu Pintu <em>Belajar</em></span><span class="hm" aria-hidden="true"><span class="hf">Satu Pintu <em>Belajar</em></span></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
-<p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. Semuanya ada di satu tempat.</p><div class="free"><i></i>100% Gratis · Tanpa Biaya, Tanpa Langganan</div>
+<p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. Semuanya ada di satu tempat, 100% gratis.</p>
 <div class="chips">${CHIPS.map((c,i)=>`<button class="chip" data-chip="${i}">${esc(c[0])}</button>`).join("")}</div>
 <form class="ask" id="ask"><input id="q" type="text" placeholder="Mau belajar apa hari ini?" aria-label="Cari materi belajar" autocomplete="off"><button type="submit" aria-label="Cari">Cari</button></form>
 </section>
