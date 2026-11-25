@@ -1201,6 +1201,9 @@ header.sc{--hp:20px}
 .mtabs a::after{left:clamp(8px,2.4vw,14px)!important;right:clamp(8px,2.4vw,14px)!important}
 }
 @media(max-width:420px){.mtabs a{font-size:11px!important;letter-spacing:.07em!important}}
+
+#view .vbar,.cdir,.dres{position:relative;z-index:3;touch-action:manipulation}
+.cdi,#view .vbar input{pointer-events:auto}
 </style>
 </head>
 <body>
@@ -1442,7 +1445,7 @@ if(k==="resources"){const cs=[...new Set(RES.map(r=>r.c))];return [{l:"",all:["r
 if(k==="knowledges")return [{l:"Topik",all:["c",!VCS.size],it:ALLT.map(c=>({t:"c",v:c,n:c,c:VID.filter(v=>vtg(v).includes(c)).length,on:VCS.has(c)}))},{l:"Level",all:["l",!VLS.size],it:["Beginner","Intermediate","Advanced"].map(l=>({t:"l",v:l,n:l,c:VID.filter(v=>v.lv===l).length,on:VLS.has(l)}))}];
 return [{l:"",all:["a",!ACS.size],it:TAGS.map(t=>({t:"a",v:t.k,n:t.n,c:t.a.length,on:ACS.has(t.k)}))}]}
 function dirHtml(k){return `<nav class="cdir" aria-label="Kategori">${dirItems(k).map(g=>`${g.l?`<div class="cdl">${g.l}</div>`:""}<div class="cdg">${`<button type="button" class="cdi${g.all[1]?" on":""}" data-cda="${g.all[0]}" aria-pressed="${g.all[1]}"><span>Semua</span><sup>${({resources:RES,knowledges:VID,articles:ART})[k].length}</sup></button>`+g.it.map(x=>`<button type="button" class="cdi${x.on?" on":""}" data-cdt="${x.t}" data-cdv="${esc(x.v)}" aria-pressed="${x.on}"><span>${esc(x.n)}</span><sup>${x.c}</sup>${x.on?`<i class="cdx" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M5 5h3v3h-3zM16 5h3v3h-3zM8 8h3v3h-3zM13 8h3v3h-3zM10 10h4v4h-4zM8 13h3v3h-3zM13 13h3v3h-3zM5 16h3v3h-3zM16 16h3v3h-3z"/></svg></i>`:""}</button>`).join("")}</div>`).join("")}</nav>`}
-function wrap(k){renderSide(k);const bar=view.querySelector(".vbar");if(!bar)return;const seg=bar.querySelector(".seg"),grid=view.querySelector("#rgrid,#vgrid,#abody");
+function wrap(k){window.__pg=k;renderSide(k);const bar=view.querySelector(".vbar");if(!bar)return;const seg=bar.querySelector(".seg"),grid=view.querySelector("#rgrid,#vgrid,#abody");
 const row=document.createElement("div");row.className="dres";row.innerHTML='<span class="dcnt" id="dcnt"></span>';if(seg)row.appendChild(seg);
 bar.insertAdjacentHTML("afterend",dirHtml(k));view.querySelector(".cdir").after(row);
 const cnt=()=>{const n=grid.querySelectorAll(".sk,.card").length,u={resources:"skill",knowledges:"video",articles:"artikel"}[k];$("#dcnt").textContent=n+" "+u};cnt();new MutationObserver(cnt).observe(grid,{childList:true})}
@@ -1473,11 +1476,11 @@ document.addEventListener("click",e=>{if(e.target.closest("[data-login]")){e.pre
 document.addEventListener("click",e=>{const b=e.target.closest(".fqb");if(!b)return;e.preventDefault();e.stopPropagation();const it=b.parentElement,o=!it.classList.contains("open");document.querySelectorAll(".fqi.open").forEach(x=>{x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")});if(o){it.classList.add("open");b.setAttribute("aria-expanded","true")}},true);
 $("#rec").addEventListener("click",e=>{const b=e.target.closest("[data-rt]");if(!b)return;const t=b.dataset.rt,v=b.dataset.rv,k=location.hash.slice(1);Q="";
 window.__keep=1;if(k==="resources"){RCS.add(v);go("resources")}else if(k==="knowledges"){if(t==="c"){VCS.add(v)}else{VLS.add(v)}go("knowledges")}else{ACS.add(v);go("articles")}});
-view.addEventListener("click",e=>{const b=e.target.closest(".cdi");if(!b)return;const k=location.hash.slice(1),SM={c:VCS,l:VLS,r:RCS,a:ACS};
+view.addEventListener("click",e=>{const b=e.target.closest(".cdi");if(!b)return;const k=window.__pg||location.hash.slice(1),SM={c:VCS,l:VLS,r:RCS,a:ACS};
 if(b.dataset.cda){SM[b.dataset.cda].clear()}else{const S=SM[b.dataset.cdt],v=b.dataset.cdv;S.has(v)?S.delete(v):S.add(v)}
-Q="";window.__keep=1;({resources,knowledges,articles})[k]()});
+Q="";window.__keep=1;const fn={resources,knowledges,articles}[k];if(fn)fn()});
 const R={resources,knowledges,articles};
-function route(){const h=location.hash.slice(1);const k=R[h]?h:"";{const kp=window.__keep;window.__keep=0;if(!kp){if(!CAT)RCS.clear();if(!TAG)ACS.clear();if(!VC&&!VL){VCS.clear();VLS.clear()}if(!CAT&&!TAG&&!VC&&!VL)RQ=""}}if(k&&!window.__pk&&document.body.classList.contains("coll")){document.body.classList.remove("coll");try{localStorage.setItem("acl-coll","")}catch(_){}if(typeof syncCb=="function")syncCb()}window.__pk=k;
+function route(){const h=location.hash.slice(1);if(!R[h])window.__pg="";const k=R[h]?h:"";{const kp=window.__keep;window.__keep=0;if(!kp){if(!CAT)RCS.clear();if(!TAG)ACS.clear();if(!VC&&!VL){VCS.clear();VLS.clear()}if(!CAT&&!TAG&&!VC&&!VL)RQ=""}}if(k&&!window.__pk&&document.body.classList.contains("coll")){document.body.classList.remove("coll");try{localStorage.setItem("acl-coll","")}catch(_){}if(typeof syncCb=="function")syncCb()}window.__pk=k;
 document.querySelectorAll(".ddb").forEach(b=>b.classList.toggle("on",b.dataset.k===k));(k?R[k]:home)();if(!k)renderSide("");window.scrollTo(0,0);document.title=(k?NAV.find(n=>n[0]===k)[1]+" — ":"")+"AI Creator Labs"}
 function go(k){if(location.hash.slice(1)===k)route();else location.hash=k}
 window.addEventListener("hashchange",()=>{Q=Q;route()});
