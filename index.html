@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AI Creator Labs — Learning Portal</title>
+<title>AI Creator Labs | Learning Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1154,6 +1154,36 @@ header{flex-wrap:wrap;gap:10px 8px}
 .gh .gr .arw{display:none!important}
 .gh .gr .more{margin-left:0!important}
 }
+
+@media(max-width:860px){
+header{--hp:clamp(18px,4vw,48px)}
+header.sc{--hp:20px}
+.mtabs{flex:0 0 calc(100% + 2*var(--hp))!important;width:calc(100% + 2*var(--hp));margin:6px calc(-1*var(--hp)) -6px!important;padding:0 var(--hp)!important;box-sizing:border-box;border-radius:0 0 22px 22px}
+}
+
+@media(max-width:860px){
+.mtabs{gap:0!important;justify-content:space-between}
+.mtabs a{letter-spacing:.1em!important;padding:10px clamp(8px,2.4vw,14px) 12px!important}
+.mtabs a::after{left:clamp(8px,2.4vw,14px)!important;right:clamp(8px,2.4vw,14px)!important}
+}
+@media(max-width:420px){.mtabs a{font-size:11px!important;letter-spacing:.07em!important}}
+
+@media(max-width:860px){
+header,header.sc{padding-bottom:0!important}
+.mtabs{margin-bottom:0!important}
+.mtabs a{padding-bottom:16px!important}
+.mtabs a::after{bottom:0!important;height:2px!important;border-radius:2px 2px 0 0!important}
+}
+
+@media(max-width:860px){
+body.has-side header,body.has-side header.sc{padding-bottom:0!important}
+}
+@media(max-width:860px){
+header,header.sc,body.has-side header.sc{--hp:clamp(18px,4vw,48px);width:100%!important;max-width:none!important;margin:0!important;top:env(safe-area-inset-top,0px)!important;border-radius:0!important;border:0!important;border-bottom:1px solid rgba(200,196,255,.12)!important;box-shadow:none!important;padding:12px var(--hp) 0!important;background:rgba(7,6,20,.82)!important}
+.mtabs{border-radius:0!important}
+}
+.msb,.msb:hover,.msb:active{background:rgba(255,255,255,.04)!important;border:1px solid rgba(200,196,255,.14)!important;box-shadow:none!important;color:rgba(200,196,235,.5)!important}
+.msb:hover,.msb:active{border-color:rgba(200,196,255,.3)!important;background:rgba(255,255,255,.06)!important;color:rgba(230,226,255,.85)!important}
 </style>
 </head>
 <body>
@@ -1164,13 +1194,13 @@ header{flex-wrap:wrap;gap:10px 8px}
 <div id="hglow" aria-hidden="true"></div>
 <div class="app">
 <aside class="side" id="side" aria-label="Menu halaman" hidden>
-<div class="sh"><a class="slg" href="#" aria-label="AI Creator Labs — beranda"><img id="slogof" class="slf" alt="AI Creator Labs"><img id="slogo" alt="AI Creator Labs"></a></div>
+<div class="sh"><a class="slg" href="#" aria-label="AI Creator Labs, beranda"><img id="slogof" class="slf" alt="AI Creator Labs"><img id="slogo" alt="AI Creator Labs"></a></div>
 <div class="sbody" id="sbody"></div>
 <div class="sf"><div id="spromo"></div><div class="stiles" id="sstil"></div><div class="org"><i class="av"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M11 3h2v18h-2zM3 11h18v2h-18zM5 5h2v2h-2zM7 7h2v2h-2zM9 9h2v2h-2zM13 13h2v2h-2zM15 15h2v2h-2zM17 17h2v2h-2zM17 5h2v2h-2zM15 7h2v2h-2zM13 9h2v2h-2zM9 13h2v2h-2zM7 15h2v2h-2zM5 17h2v2h-2z"/></svg></i><div class="otx"><b>AI Creator Labs</b><span>Learning Portal</span></div><button class="cb" id="scoll" type="button" aria-label="Ciutkan sidebar" title="Ciutkan sidebar"><svg class="ic-c" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9 6h2v2h-2zM7 8h2v2h-2zM5 10h2v2h-2zM3 12h2v2h-2zM5 14h2v2h-2zM7 16h2v2h-2zM9 18h2v2h-2zM16 6h2v2h-2zM14 8h2v2h-2zM12 10h2v2h-2zM10 12h2v2h-2zM12 14h2v2h-2zM14 16h2v2h-2zM16 18h2v2h-2z"/></svg><svg class="ic-e" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M13 6h2v2h-2zM15 8h2v2h-2zM17 10h2v2h-2zM19 12h2v2h-2zM17 14h2v2h-2zM15 16h2v2h-2zM13 18h2v2h-2zM6 6h2v2h-2zM8 8h2v2h-2zM10 10h2v2h-2zM12 12h2v2h-2zM10 14h2v2h-2zM8 16h2v2h-2zM6 18h2v2h-2z"/></svg></button></div></div>
 </aside>
 <div class="sbk" id="sbk"></div>
 <header id="hdr">
-  <a class="logo" href="#" aria-label="AI Creator Labs — beranda"><img alt="AI Creator Labs" src="images/logo-navbar.webp"></a>
+  <a class="logo" href="#" aria-label="AI Creator Labs, beranda"><img alt="AI Creator Labs" src="images/logo-navbar.webp"></a>
   <button class="msb" type="button" id="msb" aria-label="Cari"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 4h6v2H4zM4 6h2v4H4zM10 6h2v4h-2zM4 10h6v2H4zM12 12h2v2h-2zM14 14h2v2h-2zM16 16h2v2h-2z"/></svg><span>Cari…</span></button>
   <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 5h18v2h-18zM3 11h18v2h-18zM3 17h18v2h-18z"/></svg></button>
   <div class="nav" id="nav"><div class="nl" id="nl"></div><div class="nr"><a class="btn ghost lg" href="#" data-login>Login</a><a class="btn pri nb" href="#resources" data-go="resources">Mulai belajar</a></div></div>
@@ -1184,7 +1214,7 @@ header{flex-wrap:wrap;gap:10px 8px}
 <div class="fin"><div class="fcta"><div><h2>Mau belajar apa<br>hari ini?</h2><p>Mulai dari resource, video, atau artikel pilihan kami.</p></div><a class="btn pri" href="#resources" data-go="resources">Mulai jelajahi</a><div class="fpart" aria-hidden="true"></div><div class="ftp" aria-hidden="true"></div></div></div>
 <div class="fmain"><div class="fin fwide">
 <div class="fwrap">
-<div class="fl"><a class="flg" href="#" data-go="" aria-label="AI Creator Labs — beranda"><img id="flogo" alt="AI Creator Labs"></a><p class="ftag">Portal belajar AI dengan resource, video, dan artikel dalam satu tempat.</p><div class="fsoc"><a class="fic" href="https://www.instagram.com/aicreatorlabs.id/" target="_blank" rel="noopener noreferrer" aria-label="Instagram AI Creator Labs"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6 3h12v2h-12zM6 19h12v2h-12zM3 6h2v12h-2zM19 6h2v12h-2zM4 4h2v2h-2zM18 4h2v2h-2zM4 18h2v2h-2zM18 18h2v2h-2zM10 8h4v2h-4zM8 10h2v4h-2zM14 10h2v4h-2zM10 14h4v2h-4zM16 6h2v2h-2z"/></svg></a><a class="fic" href="https://www.youtube.com/@aicreatorlabsid" target="_blank" rel="noopener noreferrer" aria-label="YouTube AI Creator Labs"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 5h16v2h-16zM4 17h16v2h-16zM2 7h2v10h-2zM20 7h2v10h-2zM10 9h2v6h-2zM12 10h2v4h-2zM14 11h2v2h-2z"/></svg></a></div></div>
+<div class="fl"><a class="flg" href="#" data-go="" aria-label="AI Creator Labs, beranda"><img id="flogo" alt="AI Creator Labs"></a><p class="ftag">Portal belajar AI dengan resource, video, dan artikel dalam satu tempat.</p><div class="fsoc"><a class="fic" href="https://www.instagram.com/aicreatorlabs.id/" target="_blank" rel="noopener noreferrer" aria-label="Instagram AI Creator Labs"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6 3h12v2h-12zM6 19h12v2h-12zM3 6h2v12h-2zM19 6h2v12h-2zM4 4h2v2h-2zM18 4h2v2h-2zM4 18h2v2h-2zM18 18h2v2h-2zM10 8h4v2h-4zM8 10h2v4h-2zM14 10h2v4h-2zM10 14h4v2h-4zM16 6h2v2h-2z"/></svg></a><a class="fic" href="https://www.youtube.com/@aicreatorlabsid" target="_blank" rel="noopener noreferrer" aria-label="YouTube AI Creator Labs"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 5h16v2h-16zM4 17h16v2h-16zM2 7h2v10h-2zM20 7h2v10h-2zM10 9h2v6h-2zM12 10h2v4h-2zM14 11h2v2h-2z"/></svg></a></div></div>
 <nav class="fcol" aria-label="Sitemap"><h4>Navigasi</h4><a href="#" data-go="">Beranda</a><a href="#resources" data-go="resources">Resources</a><a href="#knowledges" data-go="knowledges">Knowledges</a><a href="#articles" data-go="articles">Articles</a></nav>
 <nav class="fcol" aria-label="Topik artikel"><h4>Topik</h4><a href="#articles" data-tag="prompting">Prompting</a><a href="#articles" data-tag="agents">Agents</a><a href="#articles" data-tag="workflow">Workflow</a><a href="#articles" data-tag="content">Content</a></nav>
 </div>
@@ -1321,7 +1351,7 @@ return `<section class="hsec fres"><div class="fhd"><h2 class="fth">Featured Res
 function home(){view.innerHTML=`<section class="home">
 <div class="eyebrow">AI Creator Labs · Learning Portal</div>
 <h1 aria-label="Satu Pintu Untuk Belajar AI"><span class="ht" aria-hidden="true">Satu Pintu Untuk<br><em>Belajar</em> AI</span><span class="hm" aria-hidden="true"><span class="hf">Satu Pintu Untuk<br><em>Belajar</em> AI</span></span></h1>
-<p class="sub">Jelajahi resource, tonton video pembelajaran, atau baca artikel — semuanya dari satu tempat.</p><div class="free"><i></i>100% Gratis · Tanpa Biaya, Tanpa Langganan</div>
+<p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. Semuanya ada di satu tempat.</p><div class="free"><i></i>100% Gratis · Tanpa Biaya, Tanpa Langganan</div>
 <div class="chips">${CHIPS.map((c,i)=>`<button class="chip" data-chip="${i}">${esc(c[0])}</button>`).join("")}</div>
 <form class="ask" id="ask"><input id="q" type="text" placeholder="Mau belajar apa hari ini?" aria-label="Cari materi belajar" autocomplete="off"><button type="submit" aria-label="Cari">Cari</button></form>
 </section>
@@ -1333,7 +1363,7 @@ const skr=(r,i)=>`<button class="sk sl2" data-r="${i}">${AB(i,r.c)}<code class="
 function rgrid(){const q=RQ.trim().toLowerCase(),L=RES.filter(r=>(!RCS.size||RCS.has(r.c))&&(!q||(r.t+" "+r.d+" "+r.c).toLowerCase().includes(q)));if(RSO==="pop")L.sort((p,r)=>RPOP.indexOf(RES.indexOf(p))-RPOP.indexOf(RES.indexOf(r)));
 return L.map(r=>{const i=RES.indexOf(r);return `<button class="sk sl2" data-r="${i}">${AB(i,r.c)}<code class="slug">/${r.t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}</code><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p><svg class="sar" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 11h16v2H3zM15 7h2v2h-2zM17 9h2v2h-2zM17 13h2v2h-2zM15 15h2v2h-2z"/></svg></button>`}).join("")||`<p class="empty">Tidak ada skill untuk “${esc(RQ)}”.</p>`}
 function resources0(){ffold();if(Q){RQ=Q;Q=""}
-view.innerHTML=`<div class="head"><div class="eyebrow">Resources · Skills${RCS.size?" · "+esc([...RCS].join(" · ")):""}</div><h2>Kumpulan Skills</h2><p>Skill siap pakai dari AI Creator Labs. Cari atau pilih topik di sidebar, buka detailnya, lalu ambil dari GitHub.</p></div>
+view.innerHTML=`<div class="head"><div class="eyebrow">Resources</div><h2>Kumpulan Skills</h2><p>Skill siap pakai dari AI Creator Labs. Cari atau pilih topik di sidebar, buka detailnya, lalu ambil dari GitHub.</p></div>
 <div class="vbar"><label class="vs">${IC.search}<input id="rq" type="search" placeholder="Cari skill…" value="${esc(RQ)}" autocomplete="off" aria-label="Cari skill"></label><div class="seg" role="group" aria-label="Urutkan"><button class="sgb" type="button" data-rsort="new" aria-pressed="${RSO==="new"}">Terbaru</button><button class="sgb" type="button" data-rsort="pop" aria-pressed="${RSO==="pop"}">Terpopuler</button></div></div>
 <div class="car skg" id="rgrid">${rgrid()}</div>`}
 view.addEventListener("click",e=>{const b=e.target.closest("[data-rsort]");if(!b)return;RSO=b.dataset.rsort;b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#rgrid").innerHTML=rgrid()});
@@ -1344,7 +1374,7 @@ const NEWEST=[10,6,0,1,2,3,4,5,7,8,9],POPULAR=[6,0,5,1,3,7,2,4,9,8,10];
 function vgrid(){const q=VQ.trim().toLowerCase(),L=(VS==="pop"?POPULAR:NEWEST).map(i=>VID[i]).filter(v=>(!q||v.t.toLowerCase().includes(q))&&(!VCS.size||vtg(v).some(t=>VCS.has(t)))&&(!VLS.size||VLS.has(v.lv)));
 return L.map(v=>`<button class="card" data-v="${VID.indexOf(v)}">${vt(v)}<h3>${esc(v.t)}</h3>${vm(v)}</button>`).join("")||`<p class="empty">Tidak ada video untuk “${esc(VQ)}”.</p>`}
 function knowledges0(){vfold();if(Q){VQ=Q;Q=""}
-view.innerHTML=`<div class="head"><div class="eyebrow">Knowledges${VCS.size||VLS.size?" · "+esc([...VCS,...VLS].join(" · ")):""}</div><h2>Pustaka Video</h2><p>Rekaman workshop dan sesi live dari kanal YouTube AI Creator Labs.</p></div>
+view.innerHTML=`<div class="head"><div class="eyebrow">Knowledges</div><h2>Pustaka Video</h2><p>Rekaman workshop dan sesi live dari kanal YouTube AI Creator Labs.</p></div>
 <div class="vbar"><label class="vs">${IC.search}<input id="vq" type="search" placeholder="Cari video…" value="${esc(VQ)}" autocomplete="off" aria-label="Cari video"></label><div class="seg" role="group" aria-label="Urutkan video"><button class="sgb" type="button" data-sort="new" aria-pressed="${VS==="new"}">Terbaru</button><button class="sgb" type="button" data-sort="pop" aria-pressed="${VS==="pop"}">Terpopuler</button></div></div>
 <div class="grid" id="vgrid">${vgrid()}</div>`}
 let AQ="",AS="new";const AOPEN=new Set();const APR=ART.map((x,i)=>i).sort((p,q)=>Math.sin(p*12.9898)-Math.sin(q*12.9898));const apop=x=>APR.indexOf(ART.indexOf(x));
@@ -1355,7 +1385,7 @@ window.ABL=AS==="pop"?"Terpopuler":"Terbaru";
 const h=`<div class="ugrid">${L.map(ac1).join("")}</div>`;
 return h}
 function articles0(){ffold();if(Q){AQ=Q;Q=""}const SEL=TAGS.filter(t=>ACS.has(t.k)),T=SEL.length===1?SEL[0]:null;
-const head=T?`<div class="head"><div class="eyebrow">Topik</div><h2>${esc(T.n)}</h2><p>${esc(T.d)}</p></div>`:`<div class="head"><div class="eyebrow">Articles${SEL.length?" · "+esc(SEL.map(t=>t.n).join(" · ")):""}</div><h2>Kumpulan Artikel</h2><p>Tulisan pilihan seputar AI. Pilih topik lewat sidebar.</p></div>`;
+const head=T?`<div class="head"><div class="eyebrow">Topik</div><h2>${esc(T.n)}</h2><p>${esc(T.d)}</p></div>`:`<div class="head"><div class="eyebrow">Articles</div><h2>Kumpulan Artikel</h2><p>Tulisan pilihan seputar AI. Pilih topik lewat sidebar.</p></div>`;
 view.innerHTML=head+`<div class="vbar"><label class="vs">${IC.search}<input id="aq" type="search" placeholder="Cari artikel…" value="${esc(AQ)}" autocomplete="off" aria-label="Cari artikel"></label><div class="seg" role="group" aria-label="Urutkan"><button class="sgb" type="button" data-asort="new" aria-pressed="${AS==="new"}">Terbaru</button><button class="sgb" type="button" data-asort="pop" aria-pressed="${AS==="pop"}">Terpopuler</button></div></div><div id="abody">${abody()}</div>`}
 view.addEventListener("input",e=>{if(e.target.id!=="aq")return;AQ=e.target.value;$("#abody").innerHTML=abody()});
 view.addEventListener("click",e=>{const g=e.target.closest("[data-atg]");if(g){const s=g.closest(".atp"),gr=s.querySelector(".agrid"),o=gr.hidden;gr.hidden=!o;s.classList.toggle("open",o);g.setAttribute("aria-expanded",o);o?AOPEN.add(g.dataset.atg):AOPEN.delete(g.dataset.atg);return}const b=e.target.closest("[data-asort]");if(!b)return;AS=b.dataset.asort;b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#abody").innerHTML=abody()});
@@ -1422,7 +1452,7 @@ $("#rec").addEventListener("click",e=>{const b=e.target.closest("[data-rt]");if(
 window.__keep=1;if(k==="resources"){RCS.add(v);go("resources")}else if(k==="knowledges"){if(t==="c"){VCS.add(v)}else{VLS.add(v)}go("knowledges")}else{ACS.add(v);go("articles")}});
 const R={resources,knowledges,articles};
 function route(){const h=location.hash.slice(1);const k=R[h]?h:"";{const kp=window.__keep;window.__keep=0;if(!kp){if(!CAT)RCS.clear();if(!TAG)ACS.clear();if(!VC&&!VL){VCS.clear();VLS.clear()}if(!CAT&&!TAG&&!VC&&!VL)RQ=""}}if(k&&!window.__pk&&document.body.classList.contains("coll")){document.body.classList.remove("coll");try{localStorage.setItem("acl-coll","")}catch(_){}if(typeof syncCb=="function")syncCb()}window.__pk=k;
-document.querySelectorAll(".ddb").forEach(b=>b.classList.toggle("on",b.dataset.k===k));(k?R[k]:home)();if(!k)renderSide("");window.scrollTo(0,0);document.title=(k?NAV.find(n=>n[0]===k)[1]+" — ":"")+"AI Creator Labs"}
+document.querySelectorAll(".ddb").forEach(b=>b.classList.toggle("on",b.dataset.k===k));(k?R[k]:home)();if(!k)renderSide("");window.scrollTo(0,0);document.title=(k?NAV.find(n=>n[0]===k)[1]+" | ":"")+"AI Creator Labs"}
 function go(k){if(location.hash.slice(1)===k)route();else location.hash=k}
 window.addEventListener("hashchange",()=>{Q=Q;route()});
 view.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;
