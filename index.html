@@ -1255,6 +1255,13 @@ header,header.sc,body.has-side header.sc{--hp:clamp(18px,4vw,48px);width:100%!im
 
 .mp:not(.open),.mp:not(.open) *{pointer-events:none!important}
 .hush .mp,.hush .mp *{pointer-events:none!important}
+
+.home::before,.home::after{display:none!important}
+.hbg{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:inherit;background:#04030c url(images/hero-bg.webp) center 78%/cover no-repeat}
+.hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,3,12,.55) 0%,rgba(4,3,12,.1) 38%,rgba(4,3,12,.0) 70%,rgba(4,3,12,.5) 100%),radial-gradient(60% 50% at 50% 38%,rgba(4,3,12,.45),transparent 75%)}
+.hbg canvas{position:absolute;inset:0;width:100%;height:100%}
+@media(max-width:560px){.hbg{background-position:center 85%;background-size:auto 100%}}
+@media(prefers-reduced-motion:reduce){.hbg canvas{opacity:.7}}
 </style>
 </head>
 <body>
@@ -1420,16 +1427,16 @@ for(let i=0;i<4;i++){const v=vs[i];it.push(`<button class="fvid" type="button" d
 const L='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 11h16v2H5zM7 7h2v2H7zM5 9h2v2H5zM5 13h2v2H5zM7 15h2v2H7z"/></svg>',R='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 11h16v2H3zM15 7h2v2h-2zM17 9h2v2h-2zM17 13h2v2h-2zM15 15h2v2h-2z"/></svg>';
 return `<section class="hsec fres"><div class="fhd"><h2 class="fth">Featured Resources</h2><div class="gr"><button class="arw" type="button" data-car="-1" aria-label="Sebelumnya">${L}</button><button class="arw" type="button" data-car="1" aria-label="Berikutnya">${R}</button></div></div><div class="car fcar">${it.join("")}</div></section>`}
 
-function home(){view.innerHTML=`<section class="home">
+function home(){view.innerHTML=`<section class="home"><div class="hbg" aria-hidden="true"><canvas id="hpt"></canvas></div>
 <div class="eyebrow">AI Creator Labs · Learning Portal</div>
-<h1 aria-label="Satu Pintu Belajar AI"><span class="ht" aria-hidden="true">Satu Pintu <em>Belajar</em></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
+<h1 aria-label="Portal Lengkap Belajar AI"><span class="ht" aria-hidden="true">Portal Lengkap <em>Belajar</em></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
 <p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. Semuanya ada di satu tempat, 100% gratis.</p>
 <div class="chips">${CHIPS.map((c,i)=>`<button class="chip" data-chip="${i}">${esc(c[0])}</button>`).join("")}</div>
 <form class="ask" id="ask"><input id="q" type="text" placeholder="Mau belajar apa hari ini?" aria-label="Cari materi belajar" autocomplete="off"><button type="submit" aria-label="Cari">Cari</button></form>
 </section>
 <section class="stats" aria-label="Statistik portal">${STATS.map(x=>`<div class="st"><div class="nw"><b data-to="${x.n}" data-suf="${x.s}">0${x.s}</b><i class="bd"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 5h9v2h-9zM17 5h2v9h-2zM15 9h2v2h-2zM13 11h2v2h-2zM11 13h2v2h-2zM9 15h2v2h-2zM7 17h2v2h-2zM5 19h2v2h-2z"/></svg></i></div><span>${x.l}</span></div>`).join("")}</section>
 ${hsecs()}`;
-$("#ask").onsubmit=e=>{e.preventDefault();openSearch($("#q").value.trim())};stats();bindQ();bindCar();startRot()}
+$("#ask").onsubmit=e=>{e.preventDefault();openSearch($("#q").value.trim())};stats();bindQ();bindCar();startRot();startPt()}
 
 const skr=(r,i)=>`<button class="sk sl2" data-r="${i}">${AB(i,r.c)}<code class="slug">/${r.t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}</code><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p><svg class="sar" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 11h16v2H3zM15 7h2v2h-2zM17 9h2v2h-2zM17 13h2v2h-2zM15 15h2v2h-2z"/></svg></button>`;
 function rgrid(){const q=RQ.trim().toLowerCase(),L=RES.filter(r=>(!RCS.size||RCS.has(r.c))&&(!q||(r.t+" "+r.d+" "+r.c).toLowerCase().includes(q)));if(RSO==="pop")L.sort((p,r)=>RPOP.indexOf(RES.indexOf(p))-RPOP.indexOf(RES.indexOf(r)));
@@ -1658,6 +1665,19 @@ $("#flogo").src=$(".logo img").src;
 $("footer").addEventListener("click",e=>{const a=e.target.closest("a[data-go],a[data-tag]");if(!a)return;e.preventDefault();Q="";CAT="";if(a.dataset.tag){TAG=a.dataset.tag;go("articles")}else{TAG="";go(a.dataset.go)}});
 
 
+function startPt(){cancelAnimationFrame(window.__pt);const c=$("#hpt");if(!c)return;const x=c.getContext("2d"),H=c.parentElement.parentElement;let W=0,Hh=0,dpr=Math.min(devicePixelRatio||1,2),P=[],run=true;
+const still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function size(){W=H.clientWidth;Hh=H.clientHeight;c.width=W*dpr;c.height=Hh*dpr;x.setTransform(dpr,0,0,dpr,0,0);const n=Math.round(Math.min(90,Math.max(34,W*Hh/16000)));P=[];for(let i=0;i<n;i++)P.push(mk(true))}
+function mk(r){const z=Math.random();return{x:Math.random()*W,y:r?Math.random()*Hh:Hh+10,r:.6+z*2.2,v:6+z*22,a:.25+z*.65,ph:Math.random()*6.28,sw:8+Math.random()*26,sp:.3+Math.random()*.7,h:Math.random()<.78?262:285}}
+let last=performance.now();
+function frame(now){if(!document.body.contains(c))return;const dt=Math.min(.05,(now-last)/1e3);last=now;x.clearRect(0,0,W,Hh);x.globalCompositeOperation="lighter";
+for(const p of P){if(!still){p.y-=p.v*dt;p.ph+=p.sp*dt}if(p.y<-12){Object.assign(p,mk(false));p.x=Math.random()*W}
+const px=p.x+Math.sin(p.ph)*p.sw,tw=.55+.45*Math.sin(p.ph*2.3+p.x),al=p.a*tw*Math.min(1,Math.max(0,(p.y+12)/90))*Math.min(1,(Hh-p.y+40)/120);
+const g=x.createRadialGradient(px,p.y,0,px,p.y,p.r*4);g.addColorStop(0,"hsla("+p.h+",100%,88%,"+al+")");g.addColorStop(.35,"hsla("+p.h+",95%,70%,"+al*.45+")");g.addColorStop(1,"hsla("+p.h+",90%,60%,0)");x.fillStyle=g;x.beginPath();x.arc(px,p.y,p.r*4,0,6.283);x.fill()}
+window.__pt=requestAnimationFrame(frame)}
+size();if(window.__ptRO)window.__ptRO.disconnect();window.__ptRO=new ResizeObserver(()=>size());window.__ptRO.observe(H);
+if(window.__ptIO)window.__ptIO.disconnect();window.__ptIO=new IntersectionObserver(e=>{if(e[0].isIntersecting){cancelAnimationFrame(window.__pt);last=performance.now();window.__pt=requestAnimationFrame(frame)}else cancelAnimationFrame(window.__pt)});window.__ptIO.observe(H);
+window.__pt=requestAnimationFrame(frame)}
 function startRot(){clearInterval(window.__rot);const w=$("#hrot");if(!w)return;const L=[...w.children];if(L.length<2||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
 let i=0,hold=false;w.addEventListener("mouseenter",()=>hold=true);w.addEventListener("mouseleave",()=>hold=false);
 window.__rot=setInterval(()=>{if(hold||document.hidden||!document.body.contains(w)){if(!document.body.contains(w))clearInterval(window.__rot);return}
