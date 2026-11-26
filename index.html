@@ -1267,6 +1267,8 @@ header,header.sc,body.has-side header.sc{--hp:clamp(18px,4vw,48px);width:100%!im
 .home .ask{background:rgba(14,12,42,.34)!important;border-color:rgba(200,196,255,.14)!important}
 
 .hrot{align-items:start;transition:height .35s cubic-bezier(.2,.8,.2,1)}
+
+.home .sub .nw{display:block;white-space:nowrap;font-size:min(1em,calc((100vw - 60px)/19.9))}
 </style>
 </head>
 <body>
@@ -1435,7 +1437,7 @@ return `<section class="hsec fres"><div class="fhd"><h2 class="fth">Featured Res
 function home(){view.innerHTML=`<section class="home"><div class="hbg" aria-hidden="true"><canvas id="hpt"></canvas></div>
 <div class="eyebrow">AI Creator Labs · Learning Portal</div>
 <h1 aria-label="Portal Lengkap Belajar AI"><span class="ht" aria-hidden="true">Portal Lengkap <em>Belajar</em></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
-<p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. Semuanya ada di satu tempat, 100% gratis.</p>
+<p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. <span class="nw">Semuanya ada di satu tempat, 100% gratis.</span></p>
 <div class="chips">${CHIPS.map((c,i)=>`<button class="chip" data-chip="${i}">${esc(c[0])}</button>`).join("")}</div>
 <form class="ask" id="ask"><input id="q" type="text" placeholder="Mau belajar apa hari ini?" aria-label="Cari materi belajar" autocomplete="off"><button type="submit" aria-label="Cari">Cari</button></form>
 </section>
