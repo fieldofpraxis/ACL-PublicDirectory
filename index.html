@@ -1242,6 +1242,14 @@ header,header.sc{padding-bottom:0!important}
 .mtabs a{padding-bottom:16px!important}
 .mtabs a::after{bottom:0!important;height:2px!important;border-radius:2px 2px 0 0!important}
 }
+
+@media(max-width:860px){
+body.has-side header,body.has-side header.sc{padding-bottom:0!important}
+}
+@media(max-width:860px){
+header,header.sc,body.has-side header.sc{--hp:clamp(18px,4vw,48px);width:100%!important;max-width:none!important;margin:0!important;top:env(safe-area-inset-top,0px)!important;border-radius:0!important;border:0!important;border-bottom:1px solid rgba(200,196,255,.12)!important;box-shadow:none!important;padding:12px var(--hp) 0!important;background:rgba(7,6,20,.82)!important}
+.mtabs{border-radius:0!important}
+}
 </style>
 </head>
 <body>
