@@ -1436,7 +1436,7 @@ return `<section class="hsec fres"><div class="fhd"><h2 class="fth">Featured Res
 
 function home(){view.innerHTML=`<section class="home"><div class="hbg" aria-hidden="true"><canvas id="hpt"></canvas></div>
 <div class="eyebrow">AI Creator Labs · Learning Portal</div>
-<h1 aria-label="Portal Lengkap Belajar AI"><span class="ht" aria-hidden="true">Portal Lengkap <em>Belajar</em></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
+<h1 aria-label="Portal Lengkap untuk Belajar AI"><span class="ht" aria-hidden="true">Portal Lengkap untuk <em>Belajar</em></span><span class="hrot" id="hrot" aria-hidden="true">${ROT.map((c,i)=>`<b${i?"":' class="on"'}>${ci(c)}<span class="w">${esc(c)}</span></b>`).join("")}</span></h1>
 <p class="sub">Temukan skill siap pakai, tonton video, atau baca artikel soal AI. <span class="nw">Semuanya ada di satu tempat, 100% gratis.</span></p>
 <div class="chips">${CHIPS.map((c,i)=>`<button class="chip" data-chip="${i}">${esc(c[0])}</button>`).join("")}</div>
 <form class="ask" id="ask"><input id="q" type="text" placeholder="Mau belajar apa hari ini?" aria-label="Cari materi belajar" autocomplete="off"><button type="submit" aria-label="Cari">Cari</button></form>
