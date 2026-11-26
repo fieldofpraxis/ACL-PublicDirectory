@@ -1265,6 +1265,8 @@ header,header.sc,body.has-side header.sc{--hp:clamp(18px,4vw,48px);width:100%!im
 
 .home{border-radius:clamp(13px,1.8vw,20px)!important}
 .home .ask{background:rgba(14,12,42,.34)!important;border-color:rgba(200,196,255,.14)!important}
+
+.hrot{align-items:start;transition:height .35s cubic-bezier(.2,.8,.2,1)}
 </style>
 </head>
 <body>
@@ -1681,10 +1683,10 @@ window.__pt=requestAnimationFrame(frame)}
 size();if(window.__ptRO)window.__ptRO.disconnect();window.__ptRO=new ResizeObserver(()=>size());window.__ptRO.observe(H);
 if(window.__ptIO)window.__ptIO.disconnect();window.__ptIO=new IntersectionObserver(e=>{if(e[0].isIntersecting){cancelAnimationFrame(window.__pt);last=performance.now();window.__pt=requestAnimationFrame(frame)}else cancelAnimationFrame(window.__pt)});window.__ptIO.observe(H);
 window.__pt=requestAnimationFrame(frame)}
-function startRot(){clearInterval(window.__rot);const w=$("#hrot");if(!w)return;const L=[...w.children];if(L.length<2||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+function startRot(){clearInterval(window.__rot);const w=$("#hrot");if(!w)return;const L=[...w.children];const fit=()=>{const c=w.querySelector("b.on")||L[0];if(c)w.style.height=c.offsetHeight+"px"};fit();addEventListener("resize",fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);if(L.length<2||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
 let i=0,hold=false;w.addEventListener("mouseenter",()=>hold=true);w.addEventListener("mouseleave",()=>hold=false);
 window.__rot=setInterval(()=>{if(hold||document.hidden||!document.body.contains(w)){if(!document.body.contains(w))clearInterval(window.__rot);return}
-const a=L[i];i=(i+1)%L.length;const b=L[i];a.classList.remove("on");a.classList.add("out");b.classList.remove("out");b.classList.add("on");
+const a=L[i];i=(i+1)%L.length;const b=L[i];a.classList.remove("on");a.classList.add("out");b.classList.remove("out");b.classList.add("on");fit();
 setTimeout(()=>a.classList.remove("out"),700)},2600)}
 function heatH1(){const h=$("h1"),g=$("#hglow");if(!h||!g||matchMedia("(pointer:coarse)").matches)return;
 let tx=0,ty=0,x=0,y=0,rad=0,tr=0,run=false,ox=0,oy=0;const L=(a,b,k)=>a+(b-a)*k;
