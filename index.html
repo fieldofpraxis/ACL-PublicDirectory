@@ -1264,7 +1264,9 @@ header,header.sc,body.has-side header.sc{--hp:clamp(18px,4vw,48px);width:100%!im
 @media(prefers-reduced-motion:reduce){.hbg canvas{opacity:.7}}
 
 .home{border-radius:clamp(13px,1.8vw,20px)!important}
-.home .ask{background:rgba(14,12,42,.34)!important;border-color:rgba(200,196,255,.14)!important}
+.home .ask{background:rgba(14,12,42,.34)!important;border:1px solid rgba(206,190,255,.5)!important;box-shadow:0 0 0 1px rgba(150,115,255,.12),0 0 26px -6px rgba(140,105,255,.45)!important}
+.home .ask:hover{border-color:rgba(220,208,255,.7)!important}
+.home .ask:focus-within{border-color:rgba(232,222,255,.95)!important;box-shadow:0 0 0 1px rgba(170,140,255,.3),0 0 32px -4px rgba(150,115,255,.6)!important}
 
 .hrot{align-items:start;transition:height .35s cubic-bezier(.2,.8,.2,1)}
 
